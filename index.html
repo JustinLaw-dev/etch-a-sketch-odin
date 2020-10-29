@@ -33,7 +33,15 @@
             //draw 16x16 grid
             //create 16 row divs, each with 16 inner boxes
             for (let i = 0; i < gridAmount; i++){
-                console.log(i);
+              let newRow = document.createElement('div');
+
+              //Add 16 divs within the new row
+              for(let i=0; i < gridAmount; i++) {
+                let newDiv = document.createElement('div');
+              }
+
+              //append new row with 16 divs into container
+              container.appendChild(newRow);
             }
             //row length = 600px column height = 600px
             cellHeight = (containerHeight * 10)/ gridAmount;
