@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch A Sketch</title>
+    <style>
+        html {
+            font-size: 62.75%;
+        }
+
+        .container {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const containerWidth = 60;
+        const containerHeight = 60;
+        let gridAmount = 16;
+        let cellHeight;
+        let cellWidth;
+
+        function renderInitialField () {
+            container.style.width = `${containerWidth}rem`
+            container.style.height = `${containerHeight}rem`  
+
+            //draw 16x16 grid
+            //create 16 row divs, each with 16 inner boxes
+            for (let i = 0; i < gridAmount; i++){
+                console.log(i);
+            }
+            //row length = 600px column height = 600px
+            cellHeight = (containerHeight * 10)/ gridAmount;
+            cellWidth = (container * 10)/ gridAmount;
+        }
+
+        renderInitialField();
+           </script>
+</body>
+
+</html>   
