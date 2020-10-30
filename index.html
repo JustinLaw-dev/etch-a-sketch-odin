@@ -7,10 +7,24 @@
     <style>
         html {
             font-size: 62.75%;
+            box-sizing: border-box;
+        }
+        
+        body {
+            box-sizing: inherit;
         }
 
         .container {
             border: 1px solid black;
+        }
+
+        .row{
+            display: flex;
+            width: 100%;
+        }
+        .cell {
+            background-color: white;
+            border: thin black solid;
         }
     </style>
 </head>
@@ -23,6 +37,7 @@
         const containerWidth = 60;
         const containerHeight = 60;
         let gridAmount = 16;
+        let color = 'red';
         let cellHeight;
         let cellWidth;
 
@@ -30,25 +45,39 @@
             container.style.width = `${containerWidth}rem`
             container.style.height = `${containerHeight}rem`  
 
+            //row length = 600px column height = 600px
+            cellHeight = (containerHeight * 10)/ gridAmount;
+            cellWidth = (containerWidth * 10)/ gridAmount;
             //draw 16x16 grid
             //create 16 row divs, each with 16 inner boxes
             for (let i = 0; i < gridAmount; i++){
               let newRow = document.createElement('div');
+              //give new row class of row
+              newRow.classList.add('row');
 
               //Add 16 divs within the new row
               for(let i=0; i < gridAmount; i++) {
                 let newDiv = document.createElement('div');
+                newDiv.classList.add('cell');
+                newDiv.style.width = `${cellWidth}px`;
+                newDiv.style.height = `${cellHeight}px`;
+                newRow.appendChild(newDiv);
               }
 
               //append new row with 16 divs into container
+              
               container.appendChild(newRow);
+
             }
-            //row length = 600px column height = 600px
-            cellHeight = (containerHeight * 10)/ gridAmount;
-            cellWidth = (container * 10)/ gridAmount;
         }
 
         renderInitialField();
+        const allCells = document.querySelectorAll('.cell');
+        allCells.forEach(cell => {
+            cell.addEventListener('mouseenter', function(e){
+                e.currentTarget.style.background = color;
+            })
+        })
            </script>
 </body>
 
